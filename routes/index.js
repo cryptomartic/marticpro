@@ -152,9 +152,28 @@ router.get('/binance-pay', ensureAuthenticated, (req, res) =>
 );
 
 
+router.get('/sol-pay', ensureAuthenticated, (req, res) =>
+  res.render('solpay', {
+    user: req.user
+  })
+);
 
-router.get('/usdt-pay', ensureAuthenticated, (req, res) =>
+router.get('/litecoin-pay', ensureAuthenticated, (req, res) =>
+  res.render('ltc', {
+    user: req.user
+  })
+);
+
+
+
+router.get('/trc20-pay', ensureAuthenticated, (req, res) =>
   res.render('usdt', {
+    user: req.user
+  })
+);
+
+router.get('/bep20-pay', ensureAuthenticated, (req, res) =>
+  res.render('bep', {
     user: req.user
   })
 );

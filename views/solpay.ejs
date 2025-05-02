@@ -93,7 +93,9 @@
                 <li class="nav-item"><a class="nav-link" href="/withdrawal">Withdraw Funds </a></li>
               </ul>
             </div>
+           
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/earnings">
               <i class="icon-bar-graph menu-icon"></i>
@@ -101,7 +103,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/help-desk">
+            <a class="nav-link" href="/">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Help desk</span>
             </a>
@@ -111,73 +113,114 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome Back, <%= " " 
-                  + user.first_name %></h3>
-                  <h6 class="font-weight-normal mb-0">General overview of Earnings, Transactions and Investments </h6>
-                </div>
-             
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 col-md-12 grid-margin transparent">
-              <div class="row">
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-tale">
-                    <div class="card-body">
-                      <p class="mb-4">Account Balance</p>
-                      <p class="fs-30 mb-2">$ <%= " " + user.availbalance %> </p>
-                     
+         
+            <div class="row">
+                <div class="col-xl-10 col-lg-11 col-md-12 ml-auto"  >
+                  <div class="row align-items-center mb-5">
+                    <div class="col-xl-10 mt-5">
+                      <div class="card rounded">
+                        <div class="card-body">
+                          <h5 class="text-primary text-info font-weight-bold mb-4">Complete transaction</h5>
+                          <ul class="list-inline text-center py-3">
+                            <li class="list-inline-item mr-4">
+                              <a href="#">
+                                <i class="fas fa-pencil-alt text-success"></i>
+                                <span class="h6 text-info">Status: </span><span class="h6 text-primary"> pending</span>
+                              </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                              <a href="#">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                <span class="h6 text-info">Level: </span><span class="h6 text-primary"> Checkout</span>
+                              </a>
+                            </li>
+                          </ul>
+                          <form>
+                            <div class="form-group">
+                                <p class="font-weight-bold text-primary" id="counter">Expires in 720 Secs</p>
+                              <button type="button" class="btn btn-md text-uppercase font-weight-bold text-light bg-primary py-2 mb-5" id="refresh">refresh time</button>
+                            </div>
+                          </form>
+                         
+                            <div class="col-12">
+                              <div >
+                                <img src="/sol.png" alt="" class="d-block mb-4" width="200px"  height="200px">
+                                <div class="form-group">
+                                  <input
+                                    type="text"
+                                    spellcheck="false"
+                                    id="address"
+                                    name="address"
+                                    class="form-control"
+                                    value="4ZwbHy5zjUcjmsKTfSNbee2XSdyMrr67Yp4dBYdwYTbc"
+                                    style="opacity: 0; margin-bottom: -4px;"
+                                  />
+                                </div>
+                                <p class="font-weight-bold d-block" style="color: black;" >4ZwbHy5zjUcjmsKTfSNbee2XSdyMrr67Yp4dBYdwYTbc</p>
+                                <p class="font-weight-bold text-primary">Transmit Payment to the Solana wallet Address above to complete  transaction.</p>
+                                <span><button type="button" class="btn text-uppercase font-weight-bold text-light bg-primary py-2 mb-5" id="copy">copy Address</button></span>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="/deposit-success" class=" col-7 btn text-center text-uppercase font-weight-bold text-light py-2  mx-auto mb-4" style="background-color: #DC1FFF; color: white;">Confirm payment</a>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-dark-blue">
-                    <div class="card-body">
-                      <p class="mb-4">Active Deposit</p>
-                      <p class="fs-30 mb-2">$ <%= " " + user.activedeposit %> </p>
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-dark-blue">
-                    <div class="card-body">
-                      <p class="mb-4">Active Investment</p>
-                      <p class="fs-30 mb-2">$ <%= " " + user.activeinvestment %> </p>
-                      
-                    </div>
-                  </div>
-                </div>
               </div>
-            
-            </div>
-          </div>
-          <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                
-                <div class="template-demo">
-                  <a type="button" class="btn btn-info btn-lg btn-block" href="/invest">Make an  investment
-                 
-                  </a>
-                  <a type="button" class="btn btn-secondary btn-lg btn-block" href="withdrawal">Make withdrawals 
-                 
-                  </a>
-
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
          
-    </div>
-  </div>                
+      <script>
+
+        counter = document.getElementById("counter");
+        var num = 720; 
+        function counting() {
+              if(num === 0){
+                counter.innerText = "";
+            }else{
+                num = num - 1;
+                counter.innerText = " Expires in " + num + " Secs"
+            }
+        }
+        
+        
+        
+        
+        refresh = document.getElementById("refresh");
+        refresh.addEventListener("click", () => {
+            num = 720;
+        })
+           
+        
+        setInterval(counting, 1000);
+            
+        
+        copy = document.getElementById("copy");
+        var copyText = document.getElementById("address");
+        copy.addEventListener("click", () =>
+         {
+            copyText.select();
+            document.execCommand("copy")
+          }
+        
+        )
+        
+        copyText.addEventListener("click", (e)=>{
+            e.preventDefault();
+        })
+        
+        //  show the correct thing when  user tries to withdraw
+        let balance = document.getElementById('balance-amt');
+        let starter = document.getElementById('starter');
+        let starterLow = document.getElementById('staterlow')
+        
+        
+        
+        
+        </script>
+                   
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -198,7 +241,6 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
-  <% include ./partials/chat %>
 </body>
 
 </html>
